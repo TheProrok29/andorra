@@ -25,7 +25,7 @@ SECRET_KEY = '!=zqopo=+d-i0c=#0hgte!p3cr6+hu4lj5ec_-i3%!c(4^bmk+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['andorra-ts.herokuapp.com']
 
 
 # Application definition
