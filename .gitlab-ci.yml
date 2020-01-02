@@ -9,6 +9,7 @@ test:
   - export DATABASE_URL=postgres://postgres:@postgres:5432/python-test-app
   - apt-get update -qy
   - apt-get install -y python-dev python3-pip
+  - apt-get install -y chromium-browser
   - pip3 install -r requirements.txt
   - webdrivermanager chrome --linkpath AUTO
   - robot andorra/tests
