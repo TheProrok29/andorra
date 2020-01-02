@@ -29,7 +29,7 @@ Invalid Login
 
 *** Keywords ***
 Setup chromedriver
-  Set Environment Variable  webdriver.chrome.driver  ../chromedriver/
+  Create Webdriver     Chrome     executable_path=../andorra/andorra/tests/driver
 Open main page
     Open browser    ${LOGIN URL}   ${BROWSER}
     Title should be     My Store
