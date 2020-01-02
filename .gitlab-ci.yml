@@ -1,0 +1,10 @@
+stages:
+  - test
+  - deploy
+
+before_script:
+    - pip install -r requirements.txt
+
+test:
+  script:
+    - robot andorra/tests
