@@ -9,9 +9,8 @@ test:
   - export DATABASE_URL=postgres://postgres:@postgres:5432/python-test-app
   - apt-get update -qy
   - apt-get install -y python-dev python3-pip
-  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  - dpkg -i google-chrome-stable_current_amd64.deb --fix-missing; apt-get -fy install
   - pip3 install -r requirements.txt
+  - apt-get install chromium-browser
   - webdrivermanager chrome --linkpath AUTO
   - robot andorra/tests
 #
