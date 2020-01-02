@@ -9,6 +9,13 @@ before_script:
   - apt-get install -y python-dev python3-pip
   - pip3 install -r requirements.txt
 
+# PyLint test below will be updated after some code is made, at this point it's testing main app folder.
+pylint:
+  stage: Static Analysis
+  allow_failure: true
+  script:
+  - pylint -d C0301 andorra/*
+
 flake8:
   stage: Static Analysis
   script:
