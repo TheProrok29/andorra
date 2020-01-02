@@ -5,20 +5,14 @@ stages:
 before_script:
   - export DATABASE_URL=postgres://postgres:@postgres:5432/python-test-app
   - set -xe
-  -  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-  -  echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
-  -  apt-get update -yqqq
-  -  apt-get install -y google-chrome-stable
+  - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+  - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+  - apt-get update -yqqq
+  - apt-get install -y google-chrome-stable
   - apt-get install -y python-dev python3-pip
   - pip3 install -r requirements.txt
   - webdrivermanager chrome --linkpath AUTO
 
-test:
-  stage: test
-  script:
-  - python3 -V
-  - chromedriver --version
-  - robot andorra/tests
 #
 #staging:
 #  stage: deploy
@@ -30,6 +24,15 @@ test:
 #  only:
 #  - master
 #
+
+test:
+  stage: test
+  script:
+  - python3 -V
+  - chromedriver --version
+  - google-chrome-stable --version
+  - robot andorra/tests
+
 #production:
 #  stage: deploy
 #  script:
