@@ -14,6 +14,7 @@ pylint:
   stage: Static Analysis
   allow_failure: true
   script:
+  - pip install --pre -U pylint astroid
   - pylint -d C0301 andorra/*
 
 flake8:
