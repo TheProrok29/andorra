@@ -1,7 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary
-Library  OperatingSystem
-Suite Setup  Setup chromedriver
+#Library  OperatingSystem
+#Suite Setup  Setup chromedriver
 
 *** Variables ***
 ${LOGIN URL}          http://automationpractice.com/index.php
@@ -28,8 +28,8 @@ Invalid Login
     [Teardown]  close browser
 
 *** Keywords ***
-Setup chromedriver
-  Create Webdriver     Chrome     executable_path=../andorra/andorra/tests/driver
+#Setup chromedriver
+#  Create Webdriver     Chrome     executable_path=../andorra/andorra/tests/driver
 Open main page
     Open browser    ${LOGIN URL}   ${BROWSER}
     Title should be     My Store
