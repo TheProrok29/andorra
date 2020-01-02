@@ -6,6 +6,7 @@ Suite Setup  Setup chromedriver
 *** Variables ***
 ${LOGIN URL}          http://automationpractice.com/index.php
 ${BROWSER}      Chrome
+${EXECDIR}      ../chromedriver
 @{list} =   There is 1 error
 
 *** Test Cases ***
@@ -30,7 +31,7 @@ Invalid Login
 *** Keywords ***
 
 Setup chromedriver
-  Set Environment Variable  webdriver.chrome.driver  ${EXECDIR}/chromedriver
+  Set Environment Variable  webdriver.chrome.driver  ${EXECDIR}
 Open main page
     Open browser    ${LOGIN URL}   ${BROWSER}
     Title should be     My Store
