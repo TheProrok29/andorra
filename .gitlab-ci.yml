@@ -20,7 +20,7 @@ staging:
   - apt-get update -qy
   - apt-get install -y ruby-dev
   - gem install dpl
-  - dpl --provider=heroku --app=gitlab-ci-python-test-staging --api-key=$d60d9acb-1799-44bf-995b-0aa61d619595
+  - dpl --provider=heroku --app=andorra-ts --api-key=$d60d9acb-1799-44bf-995b-0aa61d619595
   only:
   - master
 
@@ -39,6 +39,6 @@ test:
 #  - apt-get update -qy
 #  - apt-get install -y ruby-dev
 #  - gem install dpl
-#  - dpl --provider=heroku --app=gitlab-ci-python-test-prod --api-key=$HEROKU_PRODUCTION_API_KEY
+#  - dpl --provider=heroku --app=andorra-prod --api-key=$HEROKU_PRODUCTION_API_KEY
 #  only:
 #  - tags
