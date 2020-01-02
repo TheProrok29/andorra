@@ -4,9 +4,8 @@ stages:
 
 before_script:
   - export DATABASE_URL=postgres://postgres:@postgres:5432/python-test-app
-  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   - apt-get update -qy
-  - dpkg -i google-chrome-stable_current_amd64.deb
+  - apt install chromium-browser
   - apt-get install -y python-dev python3-pip
   - pip3 install -r requirements.txt
   - webdrivermanager chrome --linkpath AUTO
