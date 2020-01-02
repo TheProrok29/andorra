@@ -5,7 +5,7 @@ stages:
 before_script:
   - export DATABASE_URL=postgres://postgres:@postgres:5432/python-test-app
   - apt-get update -qy
-  - apt install chromium-browser
+  - snap install chromium
   - apt-get install -y python-dev python3-pip
   - pip3 install -r requirements.txt
   - webdrivermanager chrome --linkpath AUTO
