@@ -1,33 +1,31 @@
 stages:
-  - test
   - deploy
+  - test
 
 before_script:
   - export DATABASE_URL=postgres://postgres:@postgres:5432/python-test-app
+  - apt-get install -y python-dev python3-pip
+  - pip3 install -r requirements.txt
+
+#staging:
+#  stage: deploy
+#  script:
+#  - apt-get update -qy
+#  - apt-get install -y ruby-dev
+#  - gem install dpl
+#  - dpl --provider=heroku --app=andorra-ts --api-key=$HEROKU_STAGING_API_KEY
+#  only:
+#  - master
+
+test:
+  stage: test
+  script:
   - set -xe
   - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
   - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
   - apt-get update -yqqq
   - apt-get install -y google-chrome-stable
-  - apt-get install -y python-dev python3-pip
-  - pip3 install -r requirements.txt
   - webdrivermanager chrome --linkpath AUTO
-
-
-staging:
-  stage: deploy
-  script:
-  - apt-get update -qy
-  - apt-get install -y ruby-dev
-  - gem install dpl
-  - dpl --provider=heroku --app=andorra-ts --api-key=$d60d9acb-1799-44bf-995b-0aa61d619595
-  only:
-  - master
-
-
-test:
-  stage: test
-  script:
   - python3 -V
   - chromedriver --version
   - google-chrome-stable --version
