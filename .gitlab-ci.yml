@@ -2,15 +2,17 @@ stages:
   - test
   - deploy
 
-test:
-  stage: test
-  script:
-  # this configures Django application to use attached postgres database that is run on `postgres` host
+before_script:
   - export DATABASE_URL=postgres://postgres:@postgres:5432/python-test-app
-  - apt-get update -qy
+  - set -xe
+  - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+  - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+  - apt-get update -yqqq
+  - apt-get install -y google-chrome-stable
   - apt-get install -y python-dev python3-pip
   - pip3 install -r requirements.txt
-  - robot andorra/tests
+  - webdrivermanager chrome --linkpath AUTO
+
 #
 #staging:
 #  stage: deploy
@@ -22,6 +24,15 @@ test:
 #  only:
 #  - master
 #
+
+test:
+  stage: test
+  script:
+  - python3 -V
+  - chromedriver --version
+  - google-chrome-stable --version
+  - robot andorra/tests
+
 #production:
 #  stage: deploy
 #  script:

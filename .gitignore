@@ -4,6 +4,6 @@ db.sqlite3
 .vscode/
 static/admin
 .idea
-/report.html
-/output.xml
-/log.html
+/andorra/tests/log.html
+/andorra/tests/output.xml
+/andorra/tests/report.html
