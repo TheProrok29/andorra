@@ -1,6 +1,8 @@
 *** Settings ***
 Library  SeleniumLibrary
 
+Suite Teardown    Close All Browsers
+
 *** Variables ***
 ${LOGIN URL}          http://automationpractice.com/index.php
 ${BROWSER}      Chrome
@@ -8,7 +10,7 @@ ${BROWSER}      Chrome
 
 *** Test Cases ***
 Valid Login
-    Open main page
+    Open Chrome
     Go to login
     Input Username
     Input Password
@@ -17,7 +19,7 @@ Valid Login
     [Teardown]  Close Browser
 
 Invalid Login
-    Open main page
+    Open Chrome
     Go to login
     Input invalid login
     Input invalid password
@@ -26,9 +28,12 @@ Invalid Login
     [Teardown]  close browser
 
 *** Keywords ***
-Open main page
-    Open browser    ${LOGIN URL}   ${BROWSER}
-    Title should be     My Store
+Open Chrome
+    ${chrome_options}    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    no-sandbox
+    Call Method    ${chrome_options}   add_argument    disable-dev-shm-usage
+    ${options}    Call Method     ${chrome_options}    to_capabilities
+    Open Browser    ${LOGIN_URL}    browser=chrome    desired_capabilities=${options}
 Go To Login
     click element   class=login
 Input Username
