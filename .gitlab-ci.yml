@@ -5,7 +5,7 @@ stages:
 before_script:
   - export DATABASE_URL=postgres://postgres:@postgres:5432/python-test-app
   - apt-get update -qy
-  - apt-get install -y python-dev python3-
+  - apt-get install -y python-dev python3-pip
   - apt-get -qq install chromium chromium-driver
   - pip3 install -r requirements.txt
   - apt-get install chromium-browser
@@ -14,8 +14,6 @@ before_script:
 test:
   stage: test
   script:
-  # this configures Django application to use attached postgres database that is run on `postgres` host
-
   - robot andorra/tests
 #
 #staging:
