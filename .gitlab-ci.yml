@@ -14,6 +14,7 @@ pylint:
   stage: Static Analysis
   allow_failure: true
   script:
+  - apt-get install -y python-dev python-pip
   - pip install --pre -U pylint astroid
   - pylint -d C0301 andorra/*
 
