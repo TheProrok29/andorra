@@ -1,44 +1,49 @@
 stages:
-  - test
+  - Static Analysis
   - deploy
+  - test
 
 before_script:
   - export DATABASE_URL=postgres://postgres:@postgres:5432/python-test-app
+  - apt-get update -yqqq
+  - apt-get install -y python-dev python3-pip
+  - pip3 install -r requirements.txt
+
+flake8:
+  stage: Static Analysis
+  script:
+  - flake8 --max-line-length=120
+
+staging:
+  stage: deploy
+  script:
+  - apt-get update -qy
+  - apt-get install -y ruby-dev
+  - gem install dpl
+  - dpl --provider=heroku --app=andorra-ts --api-key=$HEROKU_STAGING_API_KEY
+  only:
+  - master
+
+test:
+  stage: test
+  script:
   - set -xe
   - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
   - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
   - apt-get update -yqqq
   - apt-get install -y google-chrome-stable
-  - apt-get install -y python-dev python3-pip
-  - pip3 install -r requirements.txt
   - webdrivermanager chrome --linkpath AUTO
-
-#
-#staging:
-#  stage: deploy
-#  script:
-#  - apt-get update -qy
-#  - apt-get install -y ruby-dev
-#  - gem install dpl
-#  - dpl --provider=heroku --app=gitlab-ci-python-test-staging --api-key=$HEROKU_STAGING_API_KEY
-#  only:
-#  - master
-#
-
-test:
-  stage: test
-  script:
   - python3 -V
   - chromedriver --version
   - google-chrome-stable --version
-  - robot andorra/tests
+  - robot tests
 
-#production:
-#  stage: deploy
-#  script:
-#  - apt-get update -qy
-#  - apt-get install -y ruby-dev
-#  - gem install dpl
-#  - dpl --provider=heroku --app=gitlab-ci-python-test-prod --api-key=$HEROKU_PRODUCTION_API_KEY
-#  only:
-#  - tags
+production:
+  stage: deploy
+  script:
+  - apt-get update -qy
+  - apt-get install -y ruby-dev
+  - gem install dpl
+  - dpl --provider=heroku --app=andorra-prod --api-key=$HEROKU_PRODUCTION_API_KEY
+  only:
+  - tags
