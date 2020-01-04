@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Available journeys</h1>
+  <p>Below you can see available journeys list</p>
+  <h2>Journeys:</h2>
+  <ul>
+    {% for key, value in dictionary.items %}
+    <li><a href="#">{{key}}: {{value}}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
