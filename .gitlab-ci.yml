@@ -37,6 +37,8 @@ test:
   - chromedriver --version
   - google-chrome-stable --version
   - robot tests
+  only:
+  - master
 
 production:
   stage: deploy
