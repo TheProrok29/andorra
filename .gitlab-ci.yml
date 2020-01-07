@@ -36,6 +36,7 @@ test:
   - python3 -V
   - chromedriver --version
   - google-chrome-stable --version
+  - python3 manage.py test
   - robot tests
 
 production:
