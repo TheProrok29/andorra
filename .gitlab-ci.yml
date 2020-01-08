@@ -1,10 +1,18 @@
+services:
+    - postgres
+
+variables:
+    DATABASE_HOST: postgres
+    DATABASE_USER: postgres
+    DATABASE_PASSWORD: ""
+
 stages:
   - Static Analysis
+  - Unit Tests
   - deploy
   - test
 
 before_script:
-  - export DATABASE_URL=postgres://postgres:@postgres:5432/python-test-app
   - apt-get update -yqqq
   - apt-get install -y python-dev python3-pip
   - pip3 install -r requirements.txt
@@ -13,6 +21,11 @@ flake8:
   stage: Static Analysis
   script:
   - flake8
+
+UnitTests:
+  stage: Unit Tests
+  script:
+  - python3 manage.py test
 
 staging:
   stage: deploy
