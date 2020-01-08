@@ -21,3 +21,9 @@ class Player(models.Model):
 
     def __str__(self):
         return self.name
+
+
+# p1 = Player(name='Prorok', actual_exp=200, next_level_exp=400, level=2, health=100, strength=100)
+# p1.save()
+# p2 = Player(name='BigBoss', actual_exp=300, next_level_exp=400, level=3, health=105, strength=110)
+# p2.save()

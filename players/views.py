@@ -4,5 +4,6 @@ from .models import Player
 
 def statistics(request):
     kwargs = {}
-    kwargs['player'] = Player.objects.get(pk=1)
+    if(Player.objects.filter(pk=1).exists()):
+        kwargs['player'] = Player.objects.get(pk=1)
     return render(request, 'statistics.html', kwargs)
