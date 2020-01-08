@@ -1,0 +1,108 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="This is RPG web-text game, codename Andorra.">
+    <meta name="author" content="team-andorra">
+
+    <title>
+        Andorra
+    </title>
+
+    <!-- Plik CSS - Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Plik CSS - Aplikacja -->
+    <link rel="stylesheet"  href="{% static 'css/custom.css' %}">
+</head>
+
+<body>
+    <header>
+
+        <!-- MENU -->
+
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">Andorra</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+
+                    <!-- Niezalogowany użytkownik -->
+                    {% comment %} {% if not user.is_authenticated %} {% endcomment %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Zaloguj się</a> {% comment %} {% url 'login' %} {% endcomment %}
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Utwórz konto</a> {% comment %} {% url 'signup' %} {% endcomment %}
+                    {% comment %} {% else %} {% endcomment %}
+                    <!-- Zalogowany użytkownik -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'journeys' %}">Przygody</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Trenning</a> {% comment %} {% url 'trenning' %} {% endcomment %}
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Statystyki</a> {% comment %} {% url 'statistics' %} {% endcomment %}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Wyloguj się</a> {% comment %} {% url 'logout' %} {% endcomment %}
+                    </li>
+                    {% comment %} {% endif %} {% endcomment %}
+
+                </ul>
+                <div class="mt-2 mt-md-0 site-title">
+
+                    <!-- Etykieta strony -->
+
+                    {% block site_title %}
+                    {% endblock %}
+
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+
+    <main role="main" class="container">
+
+        <!-- Zawartość strony -->
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Andorra RPG game</span>
+        </div>
+    </footer>
+
+    <!-- Plik JS - jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+    <!-- Plik JS - Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <!-- Plik JS - Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- Plik JS - Aplikacja -->
+    {% comment %} <script src="{% static 'js/custom.js' %}"></script> {% endcomment %}
+</body>
+
+</html>
