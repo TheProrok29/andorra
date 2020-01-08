@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}
+
+{% block site_title %}
+
+<h4>
+    Statystyki
+</h4>
+
+{% endblock site_title %}
+
+{% block content %}
+<h1>Player statistics:</h1>
+<p>Name: {{player.name}}</p>
+<p>Actual exp: {{player.actual_exp}}</p>
+<p>Next level exp: {{player.next_level_exp}}</p>
+<p>Level: {{player.level}}</p>
+<p>Health: {{player.health}}</p>
+<p>Strength: {{player.strength}}</p>
+{% endblock %}
