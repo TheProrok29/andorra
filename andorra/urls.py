@@ -22,6 +22,5 @@ urlpatterns = [
     path('journeys/', include('journeys.urls')),
     path('statistics/', include('players.urls')),
     path('admin/', admin.site.urls),
-    path('journeys/', include('journeys.urls')),
     path('journeys/journey-active', include('journeys.urls'))
 ]

@@ -11,16 +11,6 @@ ${overview.element}    //a[contains(text(), \${selector})]
 *** Test Cases ***
 Nav elements visible
     Open Chrome
-<<<<<<< HEAD
-    Nav Check    zaloguj się
-    Nav Check    utwórz konto
-    Nav Check    przygody
-    Nav Check    trenning
-    Nav Check    statystyki
-    Nav Check    wyloguj sie
-    [Teardown]  Close Browser
-
-=======
     Nav Check    log in
     Nav Check    register
     Nav Check    journeys
@@ -30,8 +20,6 @@ Nav elements visible
     [Teardown]  Close Browser
 
 
-
->>>>>>> 7915b475c9b56cf269fbbdfcc18280090c4b694f
 *** Keywords ***
 Open Chrome
     ${chrome_options}    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
