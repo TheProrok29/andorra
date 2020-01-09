@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Available journeys</h1>
+  <p>Below you can see available journeys list</p>
+  <h2>Journeys:</h2>
+    {% for key, value in dictionary.items %}
+    <form class="success" id="form-id" action="#" method="post">
+      <a class="nav-link" id="form-link" style="cursor: pointer">{{key}}: {{value}}</a>
+    </form>
+    {% endfor %}
+    <div>Journey ends in: <span class="time">20</span> seconds!</div>
+    <script>
+        const duration = 20;
+        let startTime;
+
+        const label = document.querySelector('.time');
+
+        window.onload = () => {
+          startTime = Date.now();
+
+          setInterval(() => {
+            const t = Math.ceil(duration - (Date.now() - startTime) / 1000);
+            label.innerHTML = Math.max(0, t);
+          }, 1000);
+        };
+    </script>
+{% endblock %}

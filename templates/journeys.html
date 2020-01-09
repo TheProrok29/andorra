@@ -12,9 +12,11 @@
   <h1>Available journeys</h1>
   <p>Below you can see available journeys list</p>
   <h2>Journeys:</h2>
-  <ul>
     {% for key, value in dictionary.items %}
-    <li><a href="#">{{key}}: {{value}}</a></li>
+    <form class="success" id="form-id" action="journey-active" method="post">
+      <a class="nav-link"  id="form-link" style="cursor: pointer">{{key}}: {{value}}</a>
+      <button  type="submit" class="start">Start</button>
+      {% csrf_token %}
+    </form>
     {% endfor %}
-  </ul>
 {% endblock %}
