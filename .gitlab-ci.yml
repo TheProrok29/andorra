@@ -34,7 +34,7 @@ staging:
   - apt-get install -y ruby-dev
   - gem install dpl
   - dpl --provider=heroku --app=andorra-ts --api-key=$HEROKU_STAGING_API_KEY
-  - dpl heroku api --api_key $HEROKU_STAGING_API_KEY --run "python manage.py migrate"
+  - dpl heroku api --app andorra-ts --api_key $HEROKU_STAGING_API_KEY --run "python manage.py migrate"
   only:
   - master
 
