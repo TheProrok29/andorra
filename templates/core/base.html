@@ -27,7 +27,7 @@
         <!-- MENU -->
 
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="#">Andorra</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Andorra</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -38,15 +38,15 @@
                     <!-- Niezalogowany użytkownik -->
                     {% comment %} {% if not user.is_authenticated %} {% endcomment %}
                     <li class="nav-item">
-                        <a class="nav-link" href="">Zaloguj się</a> {% comment %} {% url 'login' %} {% endcomment %}
+                        <a class="nav-link" href="">Log in</a> {% comment %} {% url 'login' %} {% endcomment %}
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="">Utwórz konto</a> {% comment %} {% url 'signup' %} {% endcomment %}
+                        <a class="nav-link" href="">Register</a> {% comment %} {% url 'signup' %} {% endcomment %}
                     {% comment %} {% else %} {% endcomment %}
                     <!-- Zalogowany użytkownik -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'journeys' %}">Przygody</a>
+                        <a class="nav-link" href="{% url 'journeys' %}">Journeys</a>
                     </li>
 
                     <li class="nav-item">
@@ -54,10 +54,10 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="">Statystyki</a> {% comment %} {% url 'statistics' %} {% endcomment %}
+                        <a class="nav-link" href="{% url 'statistics' %}">Statistics</a> {% comment %} {% url 'statistics' %} {% endcomment %}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Wyloguj się</a> {% comment %} {% url 'logout' %} {% endcomment %}
+                        <a class="nav-link" href="">Log out</a> {% comment %} {% url 'logout' %} {% endcomment %}
                     </li>
                     {% comment %} {% endif %} {% endcomment %}
 
