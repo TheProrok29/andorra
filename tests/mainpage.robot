@@ -11,12 +11,12 @@ ${overview.element}    //a[contains(text(), \${selector})]
 *** Test Cases ***
 Nav elements visible
     Open Chrome
-    Nav Check    zaloguj się
-    Nav Check    utwórz konto
-    Nav Check    przygody
+    Nav Check    log in
+    Nav Check    register
+    Nav Check    journeys
     Nav Check    trenning
-    Nav Check    statystyki
-    Nav Check    wyloguj sie
+    Nav Check    statistics
+    Nav Check    log out
     [Teardown]  Close Browser
 
 
