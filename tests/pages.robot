@@ -28,17 +28,17 @@ Nav elements visible
 Journeys functionality
     Open Chrome
     Click element   xpath://*[@id="journeys"]
-    Wait Until Page Loaded
+    Wait until element is visible   xpath://*[@id="journey-title"]
     Element Should Contain    xpath://*[@id="journey-title"]   Available journeys
-    Click Element    xpath://*[@id="form-id"]/button
-    Wait Until Page Loaded
-    Element Should Contain    xpath://*[@id="countdown"]    You'll have to wait another:
+    Submit Form   xpath://*[@id="form-id"]
+    Wait until element is visible   xpath://*[@id="countdown-1"]
+    Element Should Contain    xpath://*[@id="countdown-1"]    You'll have to wait another:
 
 
 Statistics functionality
     Open Chrome
     Click Element    xpath://*[@id="statistics"]
-    Wait Until Page Loaded
+    Wait until element is visible   xpath://*[@id="statistics-title"]
     Element Should Contain    xpath://*[@id="statistics-title"]    Player statistics
 
 
