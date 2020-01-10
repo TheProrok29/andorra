@@ -9,6 +9,11 @@ ${BROWSER}      Chrome
 ${overview.element}    //a[contains(text(), \${selector})]
 
 *** Test Cases ***
+Correct homepage
+    Open Chrome
+    Element Should Contain    xpath://*[@id="navbarCollapse"]/div/h4    Main page
+    Element Should Contain    css:.text-muted    Andorra RPG game
+
 Nav elements visible
     Open Chrome
     Nav Check    log in
@@ -18,6 +23,16 @@ Nav elements visible
     Nav Check    statistics
     Nav Check    log out
     [Teardown]  Close Browser
+
+Journeys functionality
+    Open Chrome
+    Click element   xpath://a[contains(text(), journeys)]
+    Element Should Contain    css:#journey-title    Available journeys
+
+Statistics functionality
+    Open Chrome
+    Click Element    xpath://a[contains(text(), statistics)]
+    Element Should Contain    css:#statistics-title    Player statistics
 
 
 *** Keywords ***
