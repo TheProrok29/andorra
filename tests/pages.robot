@@ -13,6 +13,7 @@ Correct homepage
     Open Chrome
     Element Should Contain    xpath://*[@id="navbarCollapse"]/div/h4    Main page
     Element Should Contain    css:.text-muted    Andorra RPG game
+    [Teardown]  Close Browser
 
 Nav elements visible
     Open Chrome
@@ -26,19 +27,25 @@ Nav elements visible
 
 Journeys functionality
     Open Chrome
-    Click element   xpath://a[contains(text(), journeys)]
-    Element Should Contain    css:#journey-title    Available journeys
+    Click element   xpath://*[@id="journeys"]
+    Wait Until Page Loaded
+    Element Should Contain    xpath://*[@id="journey-title"]   Available journeys
+    Click Element    xpath://*[@id="form-id"]/button
+    Wait Until Page Loaded
+    Element Should Contain    xpath://*[@id="countdown"]    You'll have to wait another:
+
 
 Statistics functionality
     Open Chrome
-    Click Element    xpath://a[contains(text(), statistics)]
-    Element Should Contain    css:#statistics-title    Player statistics
+    Click Element    xpath://*[@id="statistics"]
+    Wait Until Page Loaded
+    Element Should Contain    xpath://*[@id="statistics-title"]    Player statistics
 
 
 *** Keywords ***
 Open Chrome
     ${chrome_options}    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    Call Method    ${chrome_options}   add_argument    headless
+    # Call Method    ${chrome_options}   add_argument    headless
     Call Method    ${chrome_options}   add_argument    no-cache
     Call Method    ${chrome_options}   add_argument    no-sandbox
     Call Method    ${chrome_options}   add_argument    disable-dev-shm-usage

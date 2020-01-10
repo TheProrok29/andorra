@@ -38,26 +38,26 @@
                     <!-- Niezalogowany użytkownik -->
                     {% comment %} {% if not user.is_authenticated %} {% endcomment %}
                     <li class="nav-item">
-                        <a class="nav-link" href="">Log in</a> {% comment %} {% url 'login' %} {% endcomment %}
+                        <a class="nav-link" href="" id="login">Log in</a> {% comment %} {% url 'login' %} {% endcomment %}
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="">Register</a> {% comment %} {% url 'signup' %} {% endcomment %}
+                        <a class="nav-link" href="" id="register">Register</a> {% comment %} {% url 'signup' %} {% endcomment %}
                     {% comment %} {% else %} {% endcomment %}
                     <!-- Zalogowany użytkownik -->
                     <li class="nav-item">
-                        <a class="nav-link" href="/journeys">Journeys</a>
+                        <a class="nav-link" href="/journeys" id="journeys">Journeys</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="">Trenning</a> {% comment %} {% url 'trenning' %} {% endcomment %}
+                        <a class="nav-link" href="" id="training">Trenning</a> {% comment %} {% url 'trenning' %} {% endcomment %}
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'statistics' %}">Statistics</a> {% comment %} {% url 'statistics' %} {% endcomment %}
+                        <a class="nav-link" href="{% url 'statistics' %}" id="statistics">Statistics</a> {% comment %} {% url 'statistics' %} {% endcomment %}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Log out</a> {% comment %} {% url 'logout' %} {% endcomment %}
+                        <a class="nav-link" href="" id="logout">Log out</a> {% comment %} {% url 'logout' %} {% endcomment %}
                     </li>
                     {% comment %} {% endif %} {% endcomment %}
 
