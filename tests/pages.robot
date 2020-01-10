@@ -33,19 +33,19 @@ Journeys functionality
     Submit Form   xpath://*[@id="form-id"]
     Wait until element is visible   xpath://*[@id="countdown-1"]
     Element Should Contain    xpath://*[@id="countdown-1"]    You'll have to wait another:
-
+    [Teardown]  Close Browser
 
 Statistics functionality
     Open Chrome
     Click Element    xpath://*[@id="statistics"]
     Wait until element is visible   xpath://*[@id="statistics-title"]
     Element Should Contain    xpath://*[@id="statistics-title"]    Player statistics
-
+    [Teardown]  Close Browser
 
 *** Keywords ***
 Open Chrome
     ${chrome_options}    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    # Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    headless
     Call Method    ${chrome_options}   add_argument    no-cache
     Call Method    ${chrome_options}   add_argument    no-sandbox
     Call Method    ${chrome_options}   add_argument    disable-dev-shm-usage
