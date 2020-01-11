@@ -12,7 +12,7 @@ class Character(models.Model):
 
     # user = models.ForeignKey(User, verbose_name='User', on_delete=models.CASCADE)
     name = models.CharField(max_length=60, unique=True)
-    skill_points = models.PositiveIntegerField()                                 # now
+    skill_points = models.PositiveIntegerField(default=0)                        # now
     level = models.PositiveSmallIntegerField()                                  # now
     health_points = models.IntegerField()                                          # now
     force = models.PositiveIntegerField()                                        # now
