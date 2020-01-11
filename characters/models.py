@@ -29,6 +29,3 @@ class Character(models.Model):
 
 # h1 = Character(name='Prorok', skill_points=200, level=2, health_points=100, force=100)
 # h1.save()
-
-# h2 = Character(name='Prostek', skill_points=300, level=4, health_points=200, force=200, defense_strength=300, action_points=30)
-# h2.save()
