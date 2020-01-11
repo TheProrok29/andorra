@@ -28,25 +28,20 @@ Nav elements visible
 
 Journeys functionality
     Open Chrome
-    Click element   xpath://*[@id="journeys"]
+    Click element                   xpath://*[@id="journeys"]
     Wait until element is visible   xpath://*[@id="journey-title"]
-    Element Should Contain    xpath://*[@id="journey-title"]   Available journeys
-    Submit Form   xpath://*[@id="form-id"]
+    Element Should Contain          xpath://*[@id="journey-title"]   Available journeys
+    Submit Form                     xpath://*[@id="form-id"]
     Wait until element is visible   xpath://*[@id="countdown-1"]
-    Element Should Contain    xpath://*[@id="countdown-1"]    You'll have to wait another:
+    Element Should Contain          xpath://*[@id="countdown-1"]    You'll have to wait another:
     [Teardown]  Close Browser
 
 Statistics functionality
     Open Chrome
-    Click Element    xpath://*[@id="statistics"]
+    Click Element                   xpath://*[@id="statistics"]
+    Element Should Be Visible       xpath:/html/body/main
     Wait until element is visible   xpath://*[@id="statistics-title"]
-    Element Should Contain    xpath://*[@id="statistics-title"]    Player statistics
-    Element Should Contain    xpath://*[@id="statistics-name"]    Name:
-    Element Should Contain    xpath://*[@id="statistics-exp"]   Actual exp:
-    Element Should Contain    xpath://*[@id="statistics-lvlexp"]    Next level exp:
-    Element Should Contain    xpath://*[@id="statistics-level"]   Level:
-    Element Should Contain    xpath://*[@id="statistics-hp"]    Health:
-    Element Should Contain    xpath://*[@id="statistics-str"]   Strength:
+    Element Should Contain          xpath://*[@id="statistics-title"]    Character statistics
     [Teardown]  Close Browser
 
 *** Keywords ***
