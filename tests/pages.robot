@@ -39,13 +39,9 @@ Journeys functionality
 Statistics functionality
     Open Chrome
     Click Element                   xpath://*[@id="statistics"]
+    Element Should Be Visible       xpath:/html/body/main
     Wait until element is visible   xpath://*[@id="statistics-title"]
     Element Should Contain          xpath://*[@id="statistics-title"]    Character statistics
-    Element Should Contain          xpath://*[@id="statistics-name"]    Name:
-    Element Should Contain          xpath://*[@id="statistics-skill-point"]   Skill points:
-    Element Should Contain          xpath://*[@id="statistics-level"]   Level:
-    Element Should Contain          xpath://*[@id="statistics-hp"]    Health:
-    Element Should Contain          xpath://*[@id="statistics-force"]   Force:
     [Teardown]  Close Browser
 
 *** Keywords ***
