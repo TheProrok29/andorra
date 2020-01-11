@@ -4,7 +4,7 @@ Library  SeleniumLibrary
 Suite Teardown    Close All Browsers
 
 *** Variables ***
-${LOGIN URL}          http://andorra-ts.herokuapp.com/
+${LOGIN URL}          http://127.0.0.1:8000/
 ${BROWSER}      Chrome
 ${overview.element}    //a[contains(text(), \${selector})]
 
@@ -19,7 +19,8 @@ Nav elements visible
     Open Chrome
     Nav Check    log in
     Nav Check    register
-    Nav Check    journeys
+    Nav Check    journeys1
+
     Nav Check    trenning
     Nav Check    statistics
     Nav Check    log out
@@ -40,6 +41,13 @@ Statistics functionality
     Click Element    xpath://*[@id="statistics"]
     Wait until element is visible   xpath://*[@id="statistics-title"]
     Element Should Contain    xpath://*[@id="statistics-title"]    Player statistics
+    Element Should Contain    xpath://*[@id="statistics-name"]    Name:
+    Element Should Contain    xpath://*[@id="statistics-exp"]   Actual exp:
+    Element Should Contain    xpath://*[@id="statistics-lvlexp"]    Next level exp:
+    Element Should Contain    xpath://*[@id="statistics-level"]   Level:
+    Element Should Contain    xpath://*[@id="statistics-hp"]    Health:
+    Element Should Contain    xpath://*[@id="statistics-str"]   Strength:
+
     [Teardown]  Close Browser
 
 *** Keywords ***

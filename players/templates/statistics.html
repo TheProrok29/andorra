@@ -11,12 +11,12 @@
 {% block content %}
 <h1 id="statistics-title">Player statistics:</h1>
 {% if player %}
-<p>Name: {{player.name}}</p>
-<p>Actual exp: {{player.actual_exp}}</p>
-<p>Next level exp: {{player.next_level_exp}}</p>
-<p>Level: {{player.level}}</p>
-<p>Health: {{player.health}}</p>
-<p>Strength: {{player.strength}}</p>
+<p id="statistics-name">Name: {{player.name}}</p>
+<p id="statistics-exp">Actual exp: {{player.actual_exp}}</p>
+<p id="statistics-lvlexp">Next level exp: {{player.next_level_exp}}</p>
+<p id="statistics-level">Level: {{player.level}}</p>
+<p id="statistics-hp">Health: {{player.health}}</p>
+<p id="statistics-str">Strength: {{player.strength}}</p>
 {% else %}
 <p>There is no player in the database</p>
 {% endif %}
