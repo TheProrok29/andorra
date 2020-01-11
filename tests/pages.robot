@@ -4,7 +4,7 @@ Library  SeleniumLibrary
 Suite Teardown    Close All Browsers
 
 *** Variables ***
-${LOGIN URL}          http://127.0.0.1:8000/
+${LOGIN URL}          http://andorra-ts.herokuapp.com/
 ${BROWSER}      Chrome
 ${overview.element}    //a[contains(text(), \${selector})]
 
