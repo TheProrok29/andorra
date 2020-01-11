@@ -6,7 +6,6 @@ Suite Teardown    Close All Browsers
 *** Variables ***
 ${LOGIN URL}          http://andorra-ts.herokuapp.com/
 ${BROWSER}      Chrome
-${overview.element}    //a[contains(text(), \${selector})]
 
 *** Test Cases ***
 Correct homepage
@@ -17,13 +16,14 @@ Correct homepage
 
 Nav elements visible
     Open Chrome
-    Nav Check    log in
-    Nav Check    register
-    Nav Check    journeys1
-
-    Nav Check    trenning
-    Nav Check    statistics
-    Nav Check    log out
+    Page Should Contain Element    xpath://*[@id="login"]
+    Page Should Contain Element    xpath://*[@id="register"]
+    Page Should Contain Element    xpath://*[@id="journeys"]
+    Page Should Contain Element    xpath://*[@id="login"]
+    Page Should Contain Element    xpath://*[@id="training"]
+    Page Should Contain Element    xpath://*[@id="statistics"]
+    Page Should Contain Element    xpath://*[@id="login"]
+    Page Should Contain Element    xpath://*[@id="logout"]
     [Teardown]  Close Browser
 
 Journeys functionality
@@ -47,7 +47,6 @@ Statistics functionality
     Element Should Contain    xpath://*[@id="statistics-level"]   Level:
     Element Should Contain    xpath://*[@id="statistics-hp"]    Health:
     Element Should Contain    xpath://*[@id="statistics-str"]   Strength:
-
     [Teardown]  Close Browser
 
 *** Keywords ***
@@ -59,7 +58,3 @@ Open Chrome
     Call Method    ${chrome_options}   add_argument    disable-dev-shm-usage
     ${options}    Call Method     ${chrome_options}    to_capabilities
     Open Browser    ${LOGIN_URL}    browser=chrome    desired_capabilities=${options}
-Nav Check
-    [Arguments]  ${selector}
-    ${locator}=  Replace variables  ${overview.element}
-    log  locator is ${locator}
