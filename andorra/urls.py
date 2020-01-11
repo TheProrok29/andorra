@@ -19,7 +19,7 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('statistics/', include('players.urls')),
+    path('statistics/', include('characters.urls')),
     path('admin/', admin.site.urls),
     path('journeys/', include('journeys.urls')),
     path('journeys/journey-active', include('journeys.urls'))

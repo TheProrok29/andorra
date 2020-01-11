@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+
+{% block site_title %}
+
+<h4>
+    Statistics
+</h4>
+
+{% endblock site_title %}
+
+{% block content %}
+<h1 id="statistics-title">Character statistics:</h1>
+{% if character %}
+<p>Name: {{character.name}}</p>
+<p>Skill points: {{character.skill_points}}</p>
+<p>Level: {{character.level}}</p>
+<p>Health: {{character.health_points}}</p>
+<p>Force: {{character.force}}</p>
+{% else %}
+<p>There is no player in the database</p>
+{% endif %}
+
+{% endblock %}
