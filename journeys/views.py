@@ -12,12 +12,14 @@ def index(request):
 
     if request.method == 'POST':
         ActiveJourney(request.POST)
-
         finish_time = ActiveJourney.end_date.strftime('%Y-%m-%d %H:%M:%S')
+        journey = ActiveJourney(journey_end=finish_time)
+        journey.save()
+
         time_dict = {
             'Time finishing': finish_time
         }
-        print(finish_time)
+
         return render(request, 'journey-active.html', {'dictionary': time_dict})
 
     else:
