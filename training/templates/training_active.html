@@ -1,0 +1,101 @@
+{% extends "core/base.html" %}
+
+{% block site_title %}
+
+<h4>
+    Training active
+</h4>
+
+{% endblock site_title %}
+
+{% block content %}
+<h1 id="character-title">Character training</h1>
+{% if character %}
+<p id="character-name">Character name: {{character.name}}</p>
+<p id="character-skill-point">Actual skill points: {{character.skill_points}}</p>
+<p id="training-start">Start training date: {{training.start_training_date}}</p>
+<input type="hidden" id="timer-start" name="variable" value="{{ training.start_training_date|date:'Y-m-d H:m:s'}}">
+<input type="hidden" id="timer-now" name="variable1" value="{{ time_now|date:'Y-m-d H:m:s' }}">
+
+<p>Time to the end of the training session: <span id="session_time"></span> seconds!</p>
+<p>Number of completed training sessions: <span id="number_session"></span></p>
+
+
+<button onclick = "stopTimer()"  class="btn btn-danger" id='stop_button'>End actual training session</button>
+<hr>
+<form class="form-horizontal" id="stopTraining" role="form" method="POST" action="{% url 'training' %}">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h2>Exit training</h2>
+                <hr>
+                 {% csrf_token %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-danger" id='exit_button'>Exit training</button>
+            </div>
+        </div>
+    </form>
+
+
+
+        </div>
+
+
+{% else %}
+<p>There is no character in the database</p>
+{% endif %}
+
+<script>
+var exit_button = document.getElementById("exit_button")
+var stop_button = document.getElementById("stop_button")
+var display_time = document.querySelector('#session_time');
+var number_training_session = document.querySelector('#number_session');
+var counter = {{session}};
+number_training_session.textContent = counter;
+exit_button.disabled = true;
+var running = true;
+var session_time = 20;
+var runner = setInterval(function () {
+    makeTimer();
+    }, 1000);
+
+function makeTimer() {
+    if (session_time < 0 && running === true) {
+
+        number_training_session.textContent = ++counter;
+        session_time = 20;
+
+    } else if (running === false) {
+        if (session_time >= 0) {
+            display_time.textContent = --session_time;
+            if (session_time <=0){
+                number_training_session.textContent = ++counter;
+                abortTimer()
+
+            }
+        }
+    }
+    if ((session_time >= 0)&& running===true){
+    display_time.textContent = session_time--;
+
+    }
+
+};
+function abortTimer() { // to be called when you want to stop the timer
+    exit_button.disabled = false;
+    stop_button.disabled = true;
+
+    clearInterval(runner);
+};
+
+function stopTimer() { // to be called when you want to stop the timer
+    running = false;
+};
+
+</script>
+
+{% endblock %}
