@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'characters',
     'journeys',
+    'training',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'characters.middleware.InceptionMiddleware',
+    'training.middleware.TrainingMiddleware',
+
 ]
 
 ROOT_URLCONF = 'andorra.urls'

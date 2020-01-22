@@ -1,0 +1,36 @@
+{% extends "core/base.html" %}
+
+{% block site_title %}
+
+<h4>
+    Training
+</h4>
+
+{% endblock site_title %}
+
+{% block content %}
+<h1 id="character-title">Character training</h1>
+{% if character %}
+<p id="character-name">Name: {{character.name}}</p>
+<p id="character-skill-point">Skill points: {{character.skill_points}}</p>
+    <form class="form-horizontal" id="startTraining" role="form" method="POST" action="{% url 'training_active' %}">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h2>Start training</h2>
+                <hr>
+                 {% csrf_token %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-success">Start</button>
+            </div>
+        </div>
+    </form>
+{% else %}
+<p>There is no character in the database</p>
+{% endif %}
+
+{% endblock %}
