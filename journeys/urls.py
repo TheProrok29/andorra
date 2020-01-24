@@ -4,6 +4,5 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.index, name='journeys'),
-    # path('journey-active', views.active, name='active'),
+    path('', views.JourneyView.as_view(), name='journeys'),
 ]

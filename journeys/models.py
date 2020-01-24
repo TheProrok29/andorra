@@ -1,11 +1,15 @@
 from django.db import models
-from datetime import datetime
-from datetime import timedelta
+from django.db.models.deletion import CASCADE
+from picklefield.fields import PickledObjectField
+
+from characters.models import Character
 
 
 class ActiveJourney(models.Model):
-    journey_end = models.DateTimeField()
-    end_date = datetime.now() + timedelta(seconds=20)
+    character = models.OneToOneField(Character, CASCADE)
+    end_date = models.DateTimeField()
+    log = PickledObjectField()
+    active = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.journey_end
+        return self.end_date
