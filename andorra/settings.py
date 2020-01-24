@@ -53,8 +53,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'characters.middleware.InceptionMiddleware',
+    'journeys.middleware.JourneysMiddleware',
     'training.middleware.TrainingMiddleware',
-
 ]
 
 ROOT_URLCONF = 'andorra.urls'

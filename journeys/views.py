@@ -1,31 +1,32 @@
-from django.shortcuts import render
+from datetime import timedelta
+
+from django.http import HttpResponseServerError
+from django.shortcuts import render, redirect
+from django.views.generic.edit import View
+from django.utils import timezone
+
+from .definitions import JourneyDefinition, journey_list
 from .models import ActiveJourney
 
-journey_list = {
-    'Easy': 'Kill the wolf',
-    'Medium': 'Kill the wolf king',
-    'Hard': 'Survive.'
-}
 
+class JourneyView(View):
 
-def index(request):
+    def get(self, request):
+        active_journey = ActiveJourney.objects.filter(character=request.character, active=True).first()
+        return render(request, 'journeys.html', {'journeys': journey_list, 'active_journey': active_journey})
 
-    if request.method == 'POST':
-        ActiveJourney(request.POST)
-        finish_time = ActiveJourney.end_date.strftime('%Y-%m-%d %H:%M:%S')
-        journey = ActiveJourney(journey_end=finish_time)
-        journey.save()
+    def post(self, request):
+        if len(ActiveJourney.objects.filter(character=request.character, active=True)) > 0:
+            return HttpResponseServerError(status=500)
+        ActiveJourney.objects.filter(character=request.character).delete()
+        journey_id = request.POST['journey_id']
+        definition: JourneyDefinition = next(filter(lambda j: j.slug == journey_id, journey_list))
+        log = list(definition.proceed(request.character))
+        duration = sum([l.duration for l in log])
 
-        time_dict = {
-            'Time finishing': finish_time
-        }
-
-        return render(request, 'journey-active.html', {'dictionary': time_dict})
-
-    else:
-        return render(request, 'journeys.html', {'dictionary': journey_list})
-
-
-# def active(request):
-#
-#     return render(request, 'journey-active.html', {'dictionary': journey_list})
+        ActiveJourney(
+            character=request.character,
+            end_date=timezone.now() + timedelta(seconds=duration),
+            log=log
+        ).save()
+        return redirect('journeys')

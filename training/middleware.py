@@ -11,7 +11,6 @@ class TrainingMiddleware:
         if 'training_id' not in request.session:
             new_training = Training()
             new_training.save()
-            print('id: ' + str(new_training.id))
             request.session['training_id'] = new_training.id
 
         request.training = Training.objects.get(id=request.session['training_id'])

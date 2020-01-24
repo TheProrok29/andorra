@@ -22,6 +22,7 @@ class Character(models.Model):
     dexterity = models.PositiveIntegerField(blank=True, null=True)            # future
     magic = models.PositiveIntegerField(blank=True, null=True)                   # future
     created = models.DateTimeField(auto_now_add=True)
+    busy = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
