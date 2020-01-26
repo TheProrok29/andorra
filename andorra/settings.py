@@ -53,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'characters.middleware.InceptionMiddleware',
+    'characters.middleware.CharacterMiddleware',
+    'characters.middleware.LevelingMiddleware',
     'journeys.middleware.JourneysMiddleware',
     'training.middleware.TrainingMiddleware',
 ]
@@ -127,4 +129,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ['static']
-django_heroku.settings(locals(), test_runner=False)
+django_heroku.settings(locals(), test_runner=False, staticfiles=False)

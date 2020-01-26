@@ -1,7 +1,6 @@
-from django.test import TestCase, override_settings
+from django.test import TestCase
 
 
-@override_settings(STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage')
 class HomePageTest(TestCase):
 
     def test_uses_home_template(self):
@@ -9,7 +8,6 @@ class HomePageTest(TestCase):
         self.assertTemplateUsed(response, 'home.html')
 
 
-@override_settings(STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage')
 class JourneysPageTest(TestCase):
 
     def test_uses_journeys_template(self):
