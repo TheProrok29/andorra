@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             model_name='activejourney',
             name='character',
             field=models.ForeignKey(
-                default=lambda: Character.objects.filter().first(),
+                default=lambda: getattr(Character.objects.filter().first(), 'id', None),
                 on_delete=django.db.models.deletion.CASCADE,
                 to='characters.Character'
             ),
