@@ -14,7 +14,7 @@ stages:
 
 before_script:
   - apt-get update -yqqq
-  - apt-get install -y python-dev python3-pip
+  - apt-get install -y python3.7-dev python3-pip
   - pip3 install -r requirements.txt
 
 flake8:
@@ -25,7 +25,10 @@ flake8:
 UnitTests:
   stage: Unit Tests
   script:
-  - python3 manage.py test
+  - python3 -m coverage run manage.py test
+  - python3 -m coverage report
+  - COVERAGE=$(python3 -m coverage report | tail -n 1 | grep -o "[0-9][0-9]%" | cut -b1,2)
+  - if [ $COVERAGE -lt 60 ]; then exit 1; fi
 
 staging:
   stage: deploy
