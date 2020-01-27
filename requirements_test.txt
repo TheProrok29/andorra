@@ -1,0 +1,5 @@
+-r requirements_dev.txt
+robotframework >= 3.0.4
+selenium >= 3.141.0
+robotframework-seleniumlibrary >= 4.0.0
+webdrivermanager == 0.7.4

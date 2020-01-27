@@ -7,24 +7,17 @@ variables:
     DATABASE_PASSWORD: ""
 
 stages:
-  - Static Analysis
-  - Unit Tests
+  - verify
   - deploy
   - test
 
-before_script:
-  - apt-get update -yqqq
-  - apt-get install -y python3.7-dev python3-pip
-  - pip3 install -r requirements.txt
-
-flake8:
-  stage: Static Analysis
+verify:
+  stage: verify
+  image: python:3.7
   script:
+  - set -xe
+  - pip3 install -r requirements_dev.txt
   - flake8
-
-UnitTests:
-  stage: Unit Tests
-  script:
   - python3 -m coverage run manage.py test
   - python3 -m coverage report
   - COVERAGE=$(python3 -m coverage report | tail -n 1 | grep -o "[0-9][0-9]%" | cut -b1,2)
@@ -32,19 +25,20 @@ UnitTests:
 
 staging:
   stage: deploy
+  image: ruby:2.5
   script:
-  - apt-get update -qy
-  - apt-get install -y ruby-dev
   - gem install dpl
-  - dpl --provider=heroku --app=andorra-ts --api-key=$HEROKU_STAGING_API_KEY
+  - dpl --provider=heroku --app=andorra-stg --api-key=$HEROKU_STAGING_API_KEY
   only:
   - master
 
 test:
   stage: test
+  image: python:3.7
   script:
-  - apt-get update -qy
   - set -xe
+  - apt-get update -qy
+  - pip3 install -r requirements_test.txt
   - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
   - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
   - apt-get update -yqqq
@@ -53,16 +47,14 @@ test:
   - python3 -V
   - chromedriver --version
   - google-chrome-stable --version
-  - robot --variable LOGINURL:http://andorra-ts.herokuapp.com/ --variable BROWSER:chrome tests
-
+  - robot --variable LOGINURL:http://andorra-stg.herokuapp.com/ --variable BROWSER:chrome tests
   only:
   - master
 
 production:
   stage: deploy
+  image: ruby:2.5
   script:
-  - apt-get update -qy
-  - apt-get install -y ruby-dev
   - gem install dpl
   - dpl --provider=heroku --app=andorra-prod --api-key=$HEROKU_PRODUCTION_API_KEY
   only:
