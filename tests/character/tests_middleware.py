@@ -1,15 +1,7 @@
 from django.contrib.sessions.middleware import SessionMiddleware
 from django.test import TestCase, RequestFactory
-
-from .models import Character
-from .middleware import InceptionMiddleware
-
-
-class HomePageTest(TestCase):
-
-    def test_uses_home_template(self):
-        response = self.client.get('/statistics/')
-        self.assertTemplateUsed(response, 'statistics.html')
+from characters.models import Character
+from characters.middleware import InceptionMiddleware
 
 
 class MiddlewareTest(TestCase):

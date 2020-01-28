@@ -10,7 +10,7 @@
 
 <!-- Zawartość strony -->
 {% block content %}
-
+{% if not user.is_authenticated %}
 <div class="row">
     <div class="col-sm-12">
         <p>
@@ -28,5 +28,26 @@
         </p>
     </div>
 </div>
+{% else %}
+<div class="row">
+    <div class="col-sm-12">
+        <p>
+            <h2>
+                Welcome
+                {{user.username}}
+                !
+                <br />
+            </h2>
+            <h4>
+                <small>
+                    <em>
+                        Select one of the above options in MENU.
+                    </em>
+                </small>
+            </h4>
+        </p>
+    </div>
+</div>
 
+{%endif%}
 {% endblock content %}

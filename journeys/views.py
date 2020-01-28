@@ -1,5 +1,6 @@
 from datetime import timedelta
 
+
 from django.http import HttpResponseServerError
 from django.shortcuts import render, redirect
 from django.views.generic.edit import View
