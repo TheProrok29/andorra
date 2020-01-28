@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'characters',
     'journeys',
     'training',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -125,6 +126,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+
+LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ['static']

@@ -36,15 +36,28 @@
                 <ul class="navbar-nav mr-auto">
 
                     <!-- Niezalogowany użytkownik -->
-                    {% comment %} {% if not user.is_authenticated %} {% endcomment %}
+                    {% if not user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="" id="login">Log in</a> {% comment %} {% url 'login' %} {% endcomment %}
+                        <a class="nav-link" href="{% url 'login' %}" id="login">Log in</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="" id="register">Register</a> {% comment %} {% url 'signup' %} {% endcomment %}
-                    {% comment %} {% else %} {% endcomment %}
+                        <a class="nav-link" href="{% url 'signup' %}" id="register">Register</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'journeys' %}" id="journeys">Journeys</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'training' %}" id="training">Training</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'statistics' %}" id="statistics">Statistics</a>
+                    </li>
                     <!-- Zalogowany użytkownik -->
+                    {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="/journeys" id="journeys">Journeys</a>
                     </li>
@@ -54,12 +67,13 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'statistics' %}" id="statistics">Statistics</a> {% comment %} {% url 'statistics' %} {% endcomment %}
+                        <a class="nav-link" href="{% url 'statistics' %}" id="statistics">Statistics</a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="" id="logout">Log out</a> {% comment %} {% url 'logout' %} {% endcomment %}
+                        <a class="nav-link" href="{% url 'logout' %}" id="logout">Log out</a>
                     </li>
-                    {% comment %} {% endif %} {% endcomment %}
+                    {% endif %}
 
                 </ul>
                 <div class="mt-2 mt-md-0 site-title">
