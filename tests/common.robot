@@ -1,3 +1,7 @@
+*** Variables ***
+${URL}          http://127.0.0.1:8000/
+${BROWSER}      Chrome
+
 *** Keywords ***
 Open Chrome
     ${chrome_options}    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver

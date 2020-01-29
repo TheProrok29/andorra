@@ -50,8 +50,7 @@ test:
   - python3 -V
   - chromedriver --version
   - google-chrome-stable --version
-  - robot --variable LOGINURL:http://andorra-ts.herokuapp.com/ --variable BROWSER:headlesschrome tests
-
+  - robot --variable LOGINURL:http://andorra-stg.herokuapp.com/ --variable BROWSER:chrome tests
   only:
   - master
 
