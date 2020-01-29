@@ -11,11 +11,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import django_heroku
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.getcwd()
 
 
 # Quick-start development settings - unsuitable for production
@@ -42,6 +41,7 @@ INSTALLED_APPS = [
     'characters',
     'journeys',
     'training',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -53,8 +53,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'characters.middleware.InceptionMiddleware',
+    'characters.middleware.CharacterMiddleware',
+    'characters.middleware.LevelingMiddleware',
+    'journeys.middleware.JourneysMiddleware',
     'training.middleware.TrainingMiddleware',
-
 ]
 
 ROOT_URLCONF = 'andorra.urls'
@@ -125,6 +127,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ['static']
-django_heroku.settings(locals(), test_runner=False)

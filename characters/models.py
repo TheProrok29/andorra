@@ -11,7 +11,7 @@ class Character(models.Model):
         ordering = ('name',)
 
     # user = models.ForeignKey(User, verbose_name='User', on_delete=models.CASCADE)
-    name = models.CharField(max_length=60, unique=True)
+    name = models.CharField(max_length=60)
     skill_points = models.PositiveIntegerField(default=0)                        # now
     level = models.PositiveSmallIntegerField()                                  # now
     health_points = models.IntegerField()                                          # now
@@ -22,6 +22,7 @@ class Character(models.Model):
     dexterity = models.PositiveIntegerField(blank=True, null=True)            # future
     magic = models.PositiveIntegerField(blank=True, null=True)                   # future
     created = models.DateTimeField(auto_now_add=True)
+    busy = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
