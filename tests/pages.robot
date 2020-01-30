@@ -20,7 +20,7 @@ Nav elements visible
     Page Should Contain Element    xpath://*[@id="statistics"]
     [Teardown]  Close Browser
 
-Journeys functionality
+Journeys page
     Open Chrome
     Click element                   xpath://*[@id="journeys"]
     Wait until element is visible   xpath://*[@id="journey-title"]
@@ -30,7 +30,7 @@ Journeys functionality
     Element Should Contain          xpath://*[@id="countdown-1"]    You'll have to wait another:
     [Teardown]  Close Browser
 
-Statistics functionality
+Statistics page
     Open Chrome
     Click Element                   xpath://*[@id="statistics"]
     Element Should Be Visible       xpath:/html/body/main
