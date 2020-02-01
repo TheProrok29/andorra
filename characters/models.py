@@ -1,7 +1,6 @@
 from django.db import models
+from math import floor
 # from django.contrib.auth.models import User
-
-# Create your models here.
 
 
 class Character(models.Model):
@@ -12,10 +11,10 @@ class Character(models.Model):
 
     # user = models.ForeignKey(User, verbose_name='User', on_delete=models.CASCADE)
     name = models.CharField(max_length=60)
-    skill_points = models.PositiveIntegerField(default=0)                        # now
+    growth_points = models.PositiveIntegerField(default=0)                        # now
     level = models.PositiveSmallIntegerField()                                  # now
     health_points = models.IntegerField()                                          # now
-    force = models.PositiveIntegerField()                                        # now
+    strength = models.PositiveIntegerField()                                        # now
     defense_strength = models.PositiveIntegerField(blank=True, null=True)        # future
     action_points = models.PositiveIntegerField(blank=True, null=True)         # future
     reflex = models.PositiveIntegerField(blank=True, null=True)                  # future
@@ -27,6 +26,7 @@ class Character(models.Model):
     def __str__(self):
         return self.name
 
-
-# h1 = Character(name='Prorok', skill_points=200, level=2, health_points=100, force=100)
-# h1.save()
+    @property
+    def next_level(self):
+        next_level_points = floor(6 * (1.1 ** self.level))
+        return next_level_points

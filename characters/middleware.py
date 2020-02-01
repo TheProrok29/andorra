@@ -32,7 +32,7 @@ class InceptionMiddleware:
             new_character.name = random.choice(names)
             new_character.level = 10
             new_character.health_points = 10
-            new_character.force = 3
+            new_character.strength = 3
             new_character.save()
             request.session['character_id'] = new_character.id
 
@@ -47,12 +47,11 @@ class LevelingMiddleware:
 
     def __call__(self, request: HttpRequest):
         character: Character = request.character
-        while (character.level < 100 and character.skill_points > floor(6 * (1.1 ** character.level))):
+        while (character.level < 100 and character.growth_points > floor(6 * (1.1 ** character.level))):
             character.level += 1
             character.health_points = character.level
-            character.force = floor(character.level / 3)
+            character.strength = floor(character.level / 3)
             character.save()
-
         response = self.get_response(request)
 
         return response

@@ -12,7 +12,8 @@
 <h1 id="character-title">Character training</h1>
 {% if character %}
 <p id="character-name">Name: {{character.name}}</p>
-<p id="character-skill-point">Skill points: {{character.skill_points}}</p>
+<p id="character-growth-points">Growth points: {{character.growth_points}}</p>
+<p id="next-level-growth-point">Next level growth points: {{next_lvl}}</p>
     <form class="form-horizontal" id="startTraining" role="form" method="POST" action="{% url 'training_active' %}">
         <div class="row">
             <div class="col-md-3"></div>
