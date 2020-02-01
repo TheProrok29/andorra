@@ -21,7 +21,7 @@ class LevelingTest(TestCase):
     def test_level_up(self):
         self.client.get('/statistics/')
         character = Character.objects.get(id=1)
-        character.skill_points = 704
+        character.growth_points = 704
         character.save()
 
         self.client.get('/statistics/')
@@ -29,4 +29,4 @@ class LevelingTest(TestCase):
         character.refresh_from_db()
         self.assertEqual(character.level, 50)
         self.assertEqual(character.health_points, 50)
-        self.assertEqual(character.force, 16)
+        self.assertEqual(character.strength, 16)

@@ -7,13 +7,14 @@ def training(request):
     hero = request.character
     training = request.training
     template_context = {
-        'character': hero
+        'character': hero,
+        'next_lvl': hero.next_level,
     }
     session_counter = count_number_of_sessions(training.start_training_date)
     if (request.method == 'GET') and (session_counter > 0):
         return redirect(training_active)
     if request.method == 'POST':
-        hero.skill_points += session_counter
+        hero.growth_points += session_counter
         hero.save()
         training = Training.objects.get(id=request.session['training_id'])
         training.delete()
@@ -23,7 +24,6 @@ def training(request):
 
 def training_active(request):
     template_context = {}
-
     hero = request.character
     training = request.training
 
@@ -31,6 +31,7 @@ def training_active(request):
     template_context['character'] = hero
     template_context['training'] = training
     template_context['session'] = session_counter
+    template_context['next_lvl'] = hero.next_level,
 
     return render(request, 'training_active.html', template_context)
 

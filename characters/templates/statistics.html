@@ -12,10 +12,10 @@
 <h1 id="statistics-title">Character statistics:</h1>
 {% if character %}
 <p id="statistics-name">Name: {{character.name}}</p>
-<p id="statistics-skill-point">Skill points: {{character.skill_points}}</p>
-<p id="statistics-lvl">Level: {{character.level}}</p>
+<p id="statistics-growth-point">Growth points: {{character.growth_points}}</p>
+<p id="next-level-growth-point">Next level growth points: {{next_lvl}}</p>
 <p id="statistics-hp">Health: {{character.health_points}}</p>
-<p id="statistics-force">Force: {{character.force}}</p>
+<p id="statistics-force">Strength: {{character.strength}}</p>
 {% else %}
 <p>There is no character in the database</p>
 {% endif %}
