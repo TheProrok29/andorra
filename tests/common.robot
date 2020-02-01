@@ -9,4 +9,4 @@ Open Chrome
     Call Method    ${chrome_options}   add_argument    no-sandbox
     Call Method    ${chrome_options}   add_argument    disable-dev-shm-usage
     ${options}    Call Method     ${chrome_options}    to_capabilities
-    Open Browser    ${LOGIN_URL}    browser=${BROWSER}    desired_capabilities=${options}
+    Open Browser    ${URL}    browser=${BROWSER}    desired_capabilities=${options}
