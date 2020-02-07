@@ -10,6 +10,7 @@
 
 {% block content %}
 <h1 id="character-title">Character training</h1>
+<hr>
 {% if character %}
 <p id="character-name">Name: {{character.name}}</p>
 <p id="character-growth-points">Growth points: {{character.growth_points}}</p>
@@ -18,17 +19,11 @@
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <h2>Start training</h2>
-                <hr>
                  {% csrf_token %}
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <button type="submit" class="btn btn-success">Start</button>
-            </div>
-        </div>
+                <hr>
+                <button type="submit" class="btn btn-success" {% if training_disabled %} disabled {%endif%}>Start training</button>
     </form>
 {% else %}
 <p>There is no character in the database</p>

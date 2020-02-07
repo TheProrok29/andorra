@@ -1,0 +1,85 @@
+{% extends "core/base.html" %}
+
+{% block site_title %}
+
+<h4>
+    Training ending
+</h4>
+
+{% endblock site_title %}
+
+{% block content %}
+<h1 id="character-title">Character training</h1>
+<hr>
+{% if character %}
+<p id="character-name">Character name: {{character.name}}</p>
+<p id="character-growth-points">Actual growth points: {{character.growth_points}}</p>
+<p id="next-level-growth-points">Next level growth points: {{next_lvl}}</p>
+<p id="training-start">Start training date: {{training.start_training_date}}</p>
+<input type="hidden" id="time-now" name="time-now" value="{{ time_now|date:'c'}}">
+<input type="hidden" id="time-end" name="time-end" value="{{ ending|date:'c' }}">
+
+<p>Time to the end of the last training session: <span id="remaining_time"></span> seconds!</p>
+<p>Number of completed training sessions: <span id="training_done_counter"></span></p>
+
+
+<hr>
+<form class="form-horizontal" id="stopTraining" role="form" method="POST" action="{% url 'training_start' %}">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                 {% csrf_token %}
+            </div>
+        </div>
+                <button type="submit" class="btn btn-primary" id='exit_button' disabled>Get points</button>
+</form>
+
+
+{% else %}
+<p>There is no character in the database</p>
+{% endif %}
+
+<script>
+var exit_button = document.getElementById("exit_button");
+var time_now = document.getElementById("time-now").value;
+var time_end = document.getElementById("time-end").value;
+var display_time = document.querySelector('#remaining_time');
+var number_training_session = document.querySelector('#training_done_counter');
+var remaining_time = 20 - {{actual_training_rest}};
+var trainings_done = {{training_done_counter}};
+
+number_training_session.textContent = trainings_done;
+
+var runner = setInterval(function () {
+    makeTimer();
+    }, 1000);
+
+function makeTimer() {
+    if (time_now < time_end){
+
+        if (remaining_time >= 0) {
+
+            display_time.textContent = --remaining_time;
+            if (remaining_time <=0){
+
+                number_training_session.textContent = ++trainings_done;
+                abortTimer()
+            }
+        }
+    }
+else {
+
+    display_time.textContent = 0;
+    number_training_session.textContent = trainings_done;
+    abortTimer()
+}
+}
+
+function abortTimer() { // to be called when you want to stop the timer
+    clearInterval(runner);
+    exit_button.disabled = false;
+
+}
+</script>
+
+{% endblock %}

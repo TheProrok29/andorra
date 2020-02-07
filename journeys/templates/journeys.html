@@ -56,9 +56,9 @@
     }, 1000);
   </script>
   {% endif %}
-  
 
-  
+
+
   <h1 id="journey-title">Available journeys</h1>
   <p>Below you can see available journeys list</p>
   <h2>Journeys:</h2>
@@ -66,7 +66,7 @@
     <form class="success" id="form-id" action="journey-active" method="post">
       <input type="hidden" name="journey_id" value="{{journey.slug}}">
       <a class="nav-link"  id="form-link" style="cursor: pointer">{{journey.name}}</a>
-      <button  type="submit" class="start" {% if active_journey is not None %}disabled{% endif %}>Start</button>
+      <button  type="submit" class="start" {% if journey_disabled  %} disabled {% endif %}>Start</button>
       {% csrf_token %}
     </form>
     {% endfor %}

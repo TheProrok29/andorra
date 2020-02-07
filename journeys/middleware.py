@@ -1,5 +1,6 @@
 from django.http import HttpRequest
 from django.utils import timezone
+from training.models import Training
 
 from .models import ActiveJourney
 
@@ -15,6 +16,9 @@ class JourneysMiddleware:
             request.character.save()
         if active_journey and timezone.now() > active_journey.end_date:
             active_journey.active = False
+            if Training.objects.filter(character=request.character).first() is None:
+                request.character.busy = False
+                request.character.save()
             active_journey.save()
 
         response = self.get_response(request)
