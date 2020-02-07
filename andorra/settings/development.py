@@ -56,7 +56,6 @@ MIDDLEWARE = [
     'characters.middleware.CharacterMiddleware',
     'characters.middleware.LevelingMiddleware',
     'journeys.middleware.JourneysMiddleware',
-    'training.middleware.TrainingMiddleware',
 ]
 
 ROOT_URLCONF = 'andorra.urls'

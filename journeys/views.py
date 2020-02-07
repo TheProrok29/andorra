@@ -14,7 +14,10 @@ class JourneyView(View):
 
     def get(self, request):
         active_journey = ActiveJourney.objects.filter(character=request.character, active=True).first()
-        return render(request, 'journeys.html', {'journeys': journey_list, 'active_journey': active_journey})
+        return render(request, 'journeys.html', {'journeys': journey_list,
+                                                 'active_journey': active_journey,
+                                                 'journey_disabled': request.character.busy,
+                                                 })
 
     def post(self, request):
         if len(ActiveJourney.objects.filter(character=request.character, active=True)) > 0:

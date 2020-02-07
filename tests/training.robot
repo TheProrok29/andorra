@@ -12,7 +12,7 @@ Training functionality
   Sleep    1
   Click Element    css:.btn-success
   Click Element    xpath://*[@id="stop_button"]
-  Sleep    22
-  Element Should Contain    xpath://*[@id="number_session"]    1
+  Sleep    21
+  Element Should Contain    xpath://*[@id="training_done_counter"]    1
   Click Element    xpath://*[@id="exit_button"]
   [Teardown]  Close Browser
