@@ -8,8 +8,8 @@ Suite Teardown    Close All Browsers
 *** Test Cases ***
 Register test
     Open Chrome
-    Element Should Contain    xpath://*[@id="register"]   Register
-    Click Element    xpath://*[@id="register"]
+    Element Should Contain    xpath://*[@id="signup"]   Register
+    Click Element    xpath://*[@id="signup"]
     Sleep    1
     ${low}=    Generate Random String    12    [LOWER]
     Input Text    name:username    ${low}

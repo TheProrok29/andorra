@@ -26,67 +26,7 @@
 
         <!-- MENU -->
 
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="{% url 'home' %}">Andorra</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
-
-                    <!-- Niezalogowany użytkownik -->
-                    {% if not user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}" id="login">Log in</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'signup' %}" id="register">Register</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'journeys' %}" id="journeys">Journeys</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'training_start' %}" id="training">Training</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'statistics' %}" id="statistics">Statistics</a>
-                    </li>
-                    <!-- Zalogowany użytkownik -->
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/journeys" id="journeys">Journeys</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'training_start' %}" id="training">Training</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'statistics' %}" id="statistics">Statistics</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}" id="logout">Log out</a>
-                    </li>
-                    {% endif %}
-
-                </ul>
-                <div class="mt-2 mt-md-0 site-title">
-
-                    <!-- Etykieta strony -->
-
-                    {% block site_title %}
-                    {% endblock %}
-
-                </div>
-
-            </div>
-        </nav>
+        {% include "nav.html" %}
     </header>
 
 

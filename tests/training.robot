@@ -7,7 +7,7 @@ Suite Teardown    Close All Browsers
 *** Test Cases ***
 Training functionality
   Open Chrome
-  Click Element    xpath://*[@id="training"]
+  Click Element    xpath://*[@id="training_start"]
   Element Should Contain    xpath://*[@id="character-title"]    Character training
   Sleep    1
   Click Element    css:.btn-success

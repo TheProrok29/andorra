@@ -7,17 +7,17 @@ Suite Teardown    Close All Browsers
 *** Test Cases ***
 Correct homepage
     Open Chrome
-    Element Should Contain    xpath://*[@id="navbarCollapse"]/div/h4    Main page
     Element Should Contain    css:.text-muted    Andorra RPG game
     [Teardown]  Close Browser
 
 Nav elements visible
     Open Chrome
     Page Should Contain Element    xpath://*[@id="login"]
-    Page Should Contain Element    xpath://*[@id="register"]
+    Page Should Contain Element    xpath://*[@id="signup"]
     Page Should Contain Element    xpath://*[@id="journeys"]
-    Page Should Contain Element    xpath://*[@id="training"]
+    Page Should Contain Element    xpath://*[@id="training_start"]
     Page Should Contain Element    xpath://*[@id="statistics"]
+    Page Should Contain Element    xpath://*[@id="login"]
     [Teardown]  Close Browser
 
 Journeys page
