@@ -1,6 +1,5 @@
 import os
 import random
-from math import floor
 
 from django.http import HttpRequest
 
@@ -36,22 +35,6 @@ class InceptionMiddleware:
             new_character.save()
             request.session['character_id'] = new_character.id
 
-        response = self.get_response(request)
-
-        return response
-
-
-class LevelingMiddleware:
-    def __init__(self, get_response):
-        self.get_response = get_response
-
-    def __call__(self, request: HttpRequest):
-        character: Character = request.character
-        while (character.level < 100 and character.growth_points > floor(6 * (1.1 ** character.level))):
-            character.level += 1
-            character.health_points = character.level
-            character.strength = floor(character.level / 3)
-            character.save()
         response = self.get_response(request)
 
         return response
