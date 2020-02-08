@@ -22,6 +22,8 @@ verify:
   - python3 -m coverage report
   - COVERAGE=$(python3 -m coverage report | tail -n 1 | grep -o "[0-9][0-9]%" | cut -b1,2)
   - if [ $COVERAGE -lt 60 ]; then exit 1; fi
+  after_script:
+    - bash <(curl -s https://codecov.io/bash)
 
 staging:
   stage: deploy
