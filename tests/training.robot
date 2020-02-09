@@ -9,7 +9,7 @@ Training functionality
   Open Chrome
   Click Element    xpath://*[@id="training_start"]
   Element Should Contain    xpath://*[@id="character-title"]    Character training
-  Sleep    1
+  Wait Until Page Contains Element    css:.btn-success
   Click Element    css:.btn-success
   Click Element    xpath://*[@id="stop_button"]
   Sleep    21
