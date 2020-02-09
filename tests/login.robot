@@ -12,15 +12,15 @@ Correct Login Logout Test
     Open Chrome
     Element Should Contain    xpath://*[@id="login"]    Log in
     Click Element    xpath://*[@id="login"]
-    Sleep    1
-    Click Element    name=username
-    Input Text    name=username   Robot
-    Click Element    name=password
-    Input Text    name=password    Passw0rd!
+    Wait Until Page Contains Element    name:username
+    Click Element    name:username
+    Input Text    name:username   Robot
+    Click Element    name:password
+    Input Text    name:password    Passw0rd!
     Submit Form    xpath://*[@id="loginForm"]
     Wait Until Page Contains Element    xpath:/html/body/main/div
     Element Should Contain    xpath:/html/body/main/div/div/h2    Welcome Robot
-    Sleep    1
+    Wait Until Page Contains Element    xpath://a[@id="logout"]
     Click Element    xpath://a[@id="logout"]
     Wait Until Page Contains Element    xpath://*[@id="login"]
     Element Should Contain    xpath:/html/body/main/div/div/h2    Welcome to the game!
@@ -30,7 +30,7 @@ Incorrect Login Test
     Open Chrome
     Element Should Contain    xpath://*[@id="login"]    Log in
     Click Element    xpath://*[@id="login"]
-    Sleep    1
+    Wait Until Page Contains Element    name:username
     Click Element    name:username
     Input Text    name:username   Robot
     Click Element    name:password
