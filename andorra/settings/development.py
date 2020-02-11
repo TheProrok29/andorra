@@ -55,7 +55,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'characters.middleware.InceptionMiddleware',
     'characters.middleware.CharacterMiddleware',
-    'characters.middleware.LevelingMiddleware',
     'journeys.middleware.JourneysMiddleware',
 ]
 
