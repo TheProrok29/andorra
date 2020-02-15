@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}
+
+{% block site_title %}
+
+<h4>
+    Achievements
+</h4>
+
+{% endblock site_title %}
+
+{% block content %}
+  <h1>Yours achievements</h1>
+  <p>Below you can see your achievements list</p>
+  <h2>Achievements:</h2>
+    {% for achievement in achievements %}
+        <div class="achievement">{{achievement.name}} - {{achievement.description}}</div>
+    {% empty %}
+        <div>'You have no achievements at the moment.</div>
+    {% endfor %}
+{% endblock %}
