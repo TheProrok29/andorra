@@ -57,6 +57,7 @@ MIDDLEWARE = [
     'characters.middleware.InceptionMiddleware',
     'characters.middleware.CharacterMiddleware',
     'journeys.middleware.JourneysMiddleware',
+    'accounts.middleware.UserMiddleware',
 ]
 
 ROOT_URLCONF = 'andorra.urls'
