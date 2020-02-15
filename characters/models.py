@@ -1,5 +1,6 @@
 from django.db import models
 from math import floor
+from django.contrib.auth.models import User
 
 
 class Character(models.Model):
@@ -8,7 +9,7 @@ class Character(models.Model):
         verbose_name_plural = 'Characters'
         ordering = ('name',)
 
-    # user = models.ForeignKey(User, verbose_name='User', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, verbose_name='User', on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=60)
     _growth_points = models.PositiveIntegerField(default=0)
     level = models.PositiveSmallIntegerField(null=True)
