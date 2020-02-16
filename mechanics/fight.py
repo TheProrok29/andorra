@@ -31,7 +31,7 @@ class Fight:
         else:
             return self.basic_fight(hero, enemy)
 
-    def advanced_fight(self, hero: Character, enemy: Character):
+    def advanced_fight(self, hero: Character, enemy: Character):  # fight mechanics with defense and reflex
 
         characters = [hero, enemy]
 
@@ -96,3 +96,5 @@ class Fight:
         dodge = random.random() < dodge_probability
 
         return dodge
+
+# this file contains basic and advanced mechanics for fitghting with one targer
