@@ -26,9 +26,6 @@ class InceptionMiddleware:
         self.get_response = get_response
 
     def __call__(self, request: HttpRequest):
-        if request.user.is_authenticated:
-            character = Character.objects.filter(user=request.user).first()
-            request.session['character_id'] = character.id
 
         if 'character_id' not in request.session:
             new_character = Character()

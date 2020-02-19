@@ -1,4 +1,5 @@
 from django.http import HttpRequest
+from characters.models import Character
 
 
 class UserMiddleware:
@@ -7,9 +8,13 @@ class UserMiddleware:
 
     def __call__(self, request: HttpRequest):
 
-        if request.user.is_authenticated and request.character.user == None:
-            request.character.user = request.user
-            request.character.save()
+        if request.user.is_authenticated:
+            character = Character.objects.filter(user=request.user).first()
+            if character is not None:
+                request.session['character_id'] = character.id
+            elif request.character.user is None:
+                request.character.user = request.user
+                request.character.save()
 
         response = self.get_response(request)
         return response
