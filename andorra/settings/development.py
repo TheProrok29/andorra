@@ -56,8 +56,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'characters.middleware.InceptionMiddleware',
     'characters.middleware.CharacterMiddleware',
-    'journeys.middleware.JourneysMiddleware',
     'accounts.middleware.UserMiddleware',
+    'journeys.middleware.JourneysMiddleware',
 ]
 
 ROOT_URLCONF = 'andorra.urls'
