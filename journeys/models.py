@@ -11,6 +11,7 @@ class ActiveJourney(models.Model):
     log = PickledObjectField()
     active = models.BooleanField(default=True)
     slug = models.CharField(max_length=100, blank=True, null=True)
+    is_visible = models.BooleanField(default=True)
 
     def __str__(self):
         return self.end_date
