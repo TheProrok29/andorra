@@ -61,7 +61,7 @@
   {% endif %}
 
 
-  {% if last_journey is not None %}
+  {% if last_journey.is_visible is True %}
   <div id='journey-history'>
   <h1>Last finished journey:</h1>
   <hr>
@@ -71,9 +71,14 @@
   <ul><h4>{{event}}</h4></ul>
   </li>
   {%endfor%}
-  <button id="toggle-btn"onclick="toogleHistory()">Show/Hide</button>
   {% endif %}
   </div>
+  {% comment %} <button id="toggle-btn"onclick="toogleHistory()">Show/Hide</button> {% endcomment %}
+  <form class="toggle-log"  id="form-id-log" action="journey-active" method="post">
+      <input type="hidden" name="is_visible" value="{{last_journey.is_visible}}">
+      <button onclick="toggleHistory() type="submit" class="toggle-btn">Show/Hide</button>
+      {% csrf_token %}
+    </form>
 
 
 <hr>
@@ -90,7 +95,7 @@
     {% endfor %}
 
 <script>
-function toogleHistory() {
+function toggleHistory() {
   var lastJourneyDiv = document.getElementById("journey-history");
   if (lastJourneyDiv.style.display === "none") {
     lastJourneyDiv.style.display = "block";
