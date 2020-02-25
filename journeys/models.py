@@ -15,3 +15,8 @@ class ActiveJourney(models.Model):
 
     def __str__(self):
         return self.end_date
+
+
+def toggle_journey_log_visibility(journey: ActiveJourney):
+    journey.is_visible = not journey.is_visible
+    journey.save()
