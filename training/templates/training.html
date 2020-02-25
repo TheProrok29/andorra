@@ -14,7 +14,7 @@
 {% if character %}
 <p id="character-name">Name: {{character.name}}</p>
 <p id="character-growth-points">Growth points: {{character.growth_points}}</p>
-<p id="next-level-growth-point">Next level growth points: {{next_lvl}}</p>
+<p id="next-level-growth-point">Next level growth points: {{character.next_level}}</p>
     <form class="form-horizontal" id="startTraining" role="form" method="POST" action="{% url 'training_active' %}">
         <div class="row">
             <div class="col-md-3"></div>
@@ -23,7 +23,7 @@
             </div>
         </div>
                 <hr>
-                <button type="submit" class="btn btn-success" {% if training_disabled %} disabled {%endif%}>Start training</button>
+                <button type="submit" class="btn btn-success" {% if character.busy %} disabled {%endif%}>Start training</button>
     </form>
 {% else %}
 <p>There is no character in the database</p>
