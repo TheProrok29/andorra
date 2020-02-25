@@ -54,11 +54,15 @@
     var runner = setInterval(function() {
       makeTimer();
     }, 1000);
+
+
+
   </script>
   {% endif %}
 
 
   {% if last_journey is not None %}
+  <div id='journey-history'>
   <h1>Last finished journey:</h1>
   <hr>
   <h2>Title: {{last_journey_name}}</h2>
@@ -67,11 +71,10 @@
   <ul><h4>{{event}}</h4></ul>
   </li>
   {%endfor%}
-  {% comment %} <form class="toogle" id="form-toogle" method="post">
-    <button  type="submit" class="show_hide">Toogle</button>
-    {% csrf_token %}
-  </form> {% endcomment %}
+  <button id="toggle-btn"onclick="toogleHistory()">Show/Hide</button>
   {% endif %}
+  </div>
+
 
 <hr>
   <h1 id="journey-title">Available journeys</h1>
@@ -85,4 +88,20 @@
       {% csrf_token %}
     </form>
     {% endfor %}
+
+<script>
+function toogleHistory() {
+  var lastJourneyDiv = document.getElementById("journey-history");
+  if (lastJourneyDiv.style.display === "none") {
+    lastJourneyDiv.style.display = "block";
+    document.getElementById('toggle-btn').text = "Hide";
+  } else {
+    lastJourneyDiv.style.display = "none";
+    document.getElementById('toggle-btn').text = "Show";
+  }
+}
+</script>
+
 {% endblock %}
+
+
