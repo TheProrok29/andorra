@@ -59,13 +59,11 @@
 
   </script>
   {% endif %}
-
-
+  <h2>Last finished journey:</h2>
   {% if last_journey.is_visible is True %}
   <div id='journey-history'>
-  <h1>Last finished journey:</h1>
   <hr>
-  <h2>Title: {{last_journey_name}}</h2>
+  <h3>Title: {{last_journey_name}}</h3>
   {% for event in last_journey_log %}
   <li>
   <ul><h4>{{event}}</h4></ul>
@@ -73,10 +71,9 @@
   {%endfor%}
   {% endif %}
   </div>
-  {% comment %} <button id="toggle-btn"onclick="toogleHistory()">Show/Hide</button> {% endcomment %}
   <form class="toggle-log"  id="form-id-log" action="journey-active" method="post">
       <input type="hidden" name="is_visible" value="{{last_journey.is_visible}}">
-      <button onclick="toggleHistory() type="submit" class="toggle-btn">Show/Hide</button>
+      <button onclick="toggleHistory()" type="submit" class="toggle-btn">Show/Hide</button>
       {% csrf_token %}
     </form>
 
