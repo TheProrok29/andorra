@@ -97,4 +97,4 @@ class Fight:
 
         return dodge
 
-# this file contains basic and advanced mechanics for fitghting with one targer
+# this file contains basic and advanced mechanics for fitghting with one target
